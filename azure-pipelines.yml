@@ -13,6 +13,6 @@ steps:
 - script: mkdir build
 - task: CmdLine@2
   inputs:
-    script: 'cmake ../ -DCMAKE_INSTALL_PREFIX=$HOME/azeroth-server/ -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DWITH_WARNINGS=1 -DTOOLS_BUILD=all -DSCRIPTS=static -DMODULES=static'
-    workingDirectory: 'build/'
+    script: './acore.sh c all'
+    workingDirectory: './'
 
