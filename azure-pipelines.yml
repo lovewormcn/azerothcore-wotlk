@@ -13,14 +13,6 @@ steps:
 - script: mkdir build
 - task: CmdLine@2
   inputs:
-    script: 'pwd && ls'
-    workingDirectory: '/home/vsts/work/1/s'
-- task: CmdLine@2
-  inputs:
-    script: 'pwd && ls'
+    script: 'cmake ../ -DCMAKE_INSTALL_PREFIX=$HOME/azeroth-server/ -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DWITH_WARNINGS=1 -DTOOLS_BUILD=all -DSCRIPTS=static -DMODULES=static'
     workingDirectory: 'build/'
-- task: CmdLine@2
-  inputs:
-    script: |
-      cd build && \
-      cmake ../ -DCMAKE_INSTALL_PREFIX=$HOME/azeroth-server/ -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DWITH_WARNINGS=1 -DTOOLS_BUILD=all -DSCRIPTS=static -DMODULES=static
+
