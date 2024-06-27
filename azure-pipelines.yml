@@ -13,6 +13,6 @@ steps:
 - script: mkdir build
 - task: CmdLine@2
   inputs:
-    script: './acore.sh c all'
+    script: 'sudo apt-get update && sudo apt-get install git cmake make gcc g++ clang libmysqlclient-dev libssl-dev libbz2-dev libreadline-dev libncurses-dev mysql-server libboost-all-dev'
     workingDirectory: './'
 
