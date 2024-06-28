@@ -13,8 +13,13 @@ steps:
 - script: 'git clone https://github.com/liyunfan1223/mod-playerbots.git --branch=master'
   workingDirectory: 'modules'
   displayName: '获取mod-playerbots'
+- script: 'ls mod-playerbots/'
+  workingDirectory: 'modules'
+  displayName: '显示拉取的内容'
 - script: './acore.sh docker build'
   displayName: '构建docker镜像'
+- script: 'docker images'
+  displayName: '显示docker镜像'
 #- script: mkdir build 
 #- task: CmdLine@2
 #  inputs:
