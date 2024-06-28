@@ -10,27 +10,38 @@ pool:
   vmImage: ubuntu-latest
 
 steps:
-- script: mkdir build 
-- task: CmdLine@2
-  inputs:
-    script: 'sudo apt-get update && sudo apt-get install git cmake make gcc g++ clang libmysqlclient-dev libssl-dev libbz2-dev libreadline-dev libncurses-dev mysql-server libboost-all-dev'
-    workingDirectory: './'
+- script: 'git clone https://github.com/liyunfan1223/mod-playerbots.git --branch=master'
+  workingDirectory: 'modules'
+  displayName: '获取mod-playerbots'
+- script: './acore.sh docker build'
+  displayName: '构建docker镜像'
+#- script: mkdir build 
+#- task: CmdLine@2
+#  inputs:
+#    script: 'sudo apt-get update && sudo apt-get install git cmake make gcc g++ clang libmysqlclient-dev libssl-dev libbz2-dev libreadline-dev libncurses-dev mysql-server libboost-all-dev'
+#    workingDirectory: './'
+#  displayName: '安装编译环境'
+#
+#- task: CmdLine@2
+#  inputs:
+#    script: 'cmake ../ -DCMAKE_INSTALL_PREFIX=$HOME/azeroth-server/ -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DWITH_WARNINGS=1 -DTOOLS_BUILD=all -DSCRIPTS=static -DMODULES=static'
+#    workingDirectory: 'build/'
+#  displayName: '配置cmake'
+#- task: CmdLine@2
+#  inputs:
+#    script: 'make -j 4'
+#    workingDirectory: 'build/'
+#  displayName: 'make'
+#- task: CmdLine@2
+#  inputs:
+#    script: 'make install'
+#    workingDirectory: 'build/'
+#  displayName: 'make install'
+#
+#- task: CmdLine@2
+#  inputs:
+#    script: 'ls ~/azeroth-server/'
+#    workingDirectory: './'
+#  displayName: '显示编译结果'
 
-- task: CmdLine@2
-  inputs:
-    script: 'cmake ../ -DCMAKE_INSTALL_PREFIX=$HOME/azeroth-server/ -DCMAKE_C_COMPILER=/usr/bin/clang -DCMAKE_CXX_COMPILER=/usr/bin/clang++ -DWITH_WARNINGS=1 -DTOOLS_BUILD=all -DSCRIPTS=static -DMODULES=static'
-    workingDirectory: 'build/'
-- task: CmdLine@2
-  inputs:
-    script: 'make -j 4'
-    workingDirectory: 'build/'
-- task: CmdLine@2
-  inputs:
-    script: 'make install'
-    workingDirectory: 'build/'
-
-- task: CmdLine@2
-  inputs:
-    script: 'ls ~/azeroth-server/'
-    workingDirectory: './'
 
