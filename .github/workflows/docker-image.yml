@@ -14,11 +14,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name: pwd && ls -l 
+      run: pwd && ls -l 
     - name: Git Clone Action
       uses: sudosubin/git-clone-action@v1.0.1
       with:
         # Repository owner and name. Ex: sudosubin/git-clone-action
-        repository: https://github.com/liyunfan1223/mod-playerbots.git
+        repository: https://github.com/liyunfan1223/mod-playerbots
         # Git host platform. Ex: github, gitlab, bitbucket, gitee, or else (git.suckless.org, ...)
         # platform: # optional, default is github
         # Git branch or tag to checkout.
