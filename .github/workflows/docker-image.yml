@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: pwd && ls -l 
       run: pwd && ls -l 
-    - name: Git Clone Action
+    - name: get mod-playerbots
       uses: sudosubin/git-clone-action@v1.0.1
       with:
         # Repository owner and name. Ex: sudosubin/git-clone-action
@@ -27,5 +27,16 @@ jobs:
         ref: master
         # Relative path from current directory, where to clone.
         path: modules/mod-playerbots
-    - name: show mod-playerbots dir 
-      run: ls modules/mod-playerbots
+    - name: get mod-ah-bot
+      uses: sudosubin/git-clone-action@v1.0.1
+      with:
+        # Repository owner and name. Ex: sudosubin/git-clone-action
+        repository: azerothcore/mod-ah-bot
+        # Git host platform. Ex: github, gitlab, bitbucket, gitee, or else (git.suckless.org, ...)
+        # platform: # optional, default is github
+        # Git branch or tag to checkout.
+        # ref: master
+        # Relative path from current directory, where to clone.
+        path: modules/mod-ah-bot
+    - name: docker build 
+      run: ./acore.sh docker build
