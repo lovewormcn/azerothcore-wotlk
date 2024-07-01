@@ -24,6 +24,6 @@ jobs:
         # Git branch or tag to checkout.
         ref: master
         # Relative path from current directory, where to clone.
-        path: ./modules/
+        path: modules/mod-playerbots
     - name: show mod-playerbots dir 
-      run: ls ./modules/
+      run: ls modules/mod-playerbots
