@@ -28,13 +28,13 @@ steps:
   displayName: '显示docker镜像'
 - script: "echo '$(docker_psw)' | docker login --username=$(docker_user) registry.us-west-1.aliyuncs.com --password-stdin"
   displayName: '登录registry'
-- script: 'docker tag acore/ac-wotlk-authserver:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-authserver:$(git log --pretty=format:"%h" -1) && docker  pull registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-authserver:$(git log --pretty=format:"%h" -1)'
+- script: 'docker tag acore/ac-wotlk-authserver:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-authserver:$(git log --pretty=format:"%h" -1) && docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-authserver:$(git log --pretty=format:"%h" -1)'
   displayName: '推送ac-wotlk-authserver'
-- script: 'docker tag acore/ac-wotlk-worldserver:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-worldserver:$(git log --pretty=format:"%h" -1) &&  docker  pull  registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-worldserver:$(git log --pretty=format:"%h" -1)'
+- script: 'docker tag acore/ac-wotlk-worldserver:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-worldserver:$(git log --pretty=format:"%h" -1) &&  docker  push  registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-worldserver:$(git log --pretty=format:"%h" -1)'
   displayName: '推送acore/ac-wotlk-worldserver'
-- script: 'docker tag acore/ac-wotlk-db-import:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-db-import:$(git log --pretty=format:"%h" -1) &&   docker  pull registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-db-import:$(git log --pretty=format:"%h" -1)'
+- script: 'docker tag acore/ac-wotlk-db-import:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-db-import:$(git log --pretty=format:"%h" -1) &&   docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-db-import:$(git log --pretty=format:"%h" -1)'
   displayName: '推送ac-wotlk-db-import'
-- script: 'docker tag acore/ac-wotlk-client-data:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-client-data:$(git log --pretty=format:"%h" -1) &&   docker  pull registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-client-data:$(git log --pretty=format:"%h" -1)'
+- script: 'docker tag acore/ac-wotlk-client-data:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-client-data:$(git log --pretty=format:"%h" -1) &&   docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-client-data:$(git log --pretty=format:"%h" -1)'
   displayName: '推送ac-wotlk-db-import'
 #- script: mkdir build 
 #- task: CmdLine@2
