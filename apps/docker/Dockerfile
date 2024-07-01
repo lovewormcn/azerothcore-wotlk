@@ -118,6 +118,7 @@ ENV ACORE_COMPONENT=undefined
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
       libmysqlclient21 libreadline8 \
+      libstdc++6 libc6 \
       gettext-base default-mysql-client && \
     rm -rf /var/lib/apt/lists/*
 
