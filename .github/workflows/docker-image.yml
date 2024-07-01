@@ -62,11 +62,11 @@ jobs:
     - name: docker push ac-wotlk-authserver
       run: docker tag acore/ac-wotlk-authserver:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-authserver:$(git log --pretty=format:"%h" -1) && docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-authserver:$(git log --pretty=format:"%h" -1)
     - name: docker push ac-wotlk-worldserver
-      run: docker tag acore/ac-wotlk-worldserver:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-worldserver:$(git log --pretty=format:"%h" -1) &&  docker  pull  registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-worldserver:$(git log --pretty=format:"%h" -1)
+      run: docker tag acore/ac-wotlk-worldserver:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-worldserver:$(git log --pretty=format:"%h" -1) &&  docker  push  registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-worldserver:$(git log --pretty=format:"%h" -1)
     - name: docker push ac-wotlk-db-import
-      run: docker tag acore/ac-wotlk-db-import:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-db-import:$(git log --pretty=format:"%h" -1) &&   docker  pull registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-db-import:$(git log --pretty=format:"%h" -1)
+      run: docker tag acore/ac-wotlk-db-import:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-db-import:$(git log --pretty=format:"%h" -1) &&   docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-db-import:$(git log --pretty=format:"%h" -1)
     - name: docker push ac-wotlk-client-data
-      run: docker tag acore/ac-wotlk-client-data:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-client-data:$(git log --pretty=format:"%h" -1) &&   docker  pull registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-client-data:$(git log --pretty=format:"%h" -1)
+      run: docker tag acore/ac-wotlk-client-data:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-client-data:$(git log --pretty=format:"%h" -1) &&   docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-client-data:$(git log --pretty=format:"%h" -1)
     - name: docker push ac-tools
-      run: docker tag acore/ac-tools:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-tools:$(git log --pretty=format:"%h" -1) &&   docker  pull registry.us-west-1.aliyuncs.com/out-of-wall/ac-tools:$(git log --pretty=format:"%h" -1)
+      run: docker tag acore/ac-tools:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-tools:$(git log --pretty=format:"%h" -1) &&   docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-tools:$(git log --pretty=format:"%h" -1)
           
