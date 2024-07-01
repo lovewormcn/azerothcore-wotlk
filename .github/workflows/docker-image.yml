@@ -67,6 +67,6 @@ jobs:
       run: docker tag acore/ac-wotlk-db-import:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-db-import:$(git log --pretty=format:"%h" -1) &&   docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-db-import:$(git log --pretty=format:"%h" -1)
     - name: docker push ac-wotlk-client-data
       run: docker tag acore/ac-wotlk-client-data:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-client-data:$(git log --pretty=format:"%h" -1) &&   docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-client-data:$(git log --pretty=format:"%h" -1)
-    - name: docker push ac-tools
-      run: docker tag acore/ac-tools:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-tools:$(git log --pretty=format:"%h" -1) &&   docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-tools:$(git log --pretty=format:"%h" -1)
+    - name: docker push ac-wotlk-tools
+      run: docker tag acore/ac-wotlk-tools:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-tools:$(git log --pretty=format:"%h" -1) &&   docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-tools:$(git log --pretty=format:"%h" -1)
           
