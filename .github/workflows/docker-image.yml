@@ -1,0 +1,29 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "Playerbot" ]
+  pull_request:
+    branches: [ "Playerbot" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Git Clone Action
+      uses: sudosubin/git-clone-action@v1.0.1
+      with:
+        # Repository owner and name. Ex: sudosubin/git-clone-action
+        repository: https://github.com/liyunfan1223/mod-playerbots.git
+        # Git host platform. Ex: github, gitlab, bitbucket, gitee, or else (git.suckless.org, ...)
+        # platform: # optional, default is github
+        # Git branch or tag to checkout.
+        ref: master
+        # Relative path from current directory, where to clone.
+        path: ./modules/
+    - name: show mod-playerbots dir 
+      run: ls ./modules/
