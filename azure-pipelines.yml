@@ -19,7 +19,7 @@ steps:
 - script: 'git clone https://github.com/azerothcore/mod-ah-bot.git'
   workingDirectory: 'modules'
   displayName: 'mod-ah-bot'
-- script: 'ls modules'
+- script: 'ls ./'
   workingDirectory: 'modules'
   displayName: '显示拉取的内容'
 - script: './acore.sh docker build'
