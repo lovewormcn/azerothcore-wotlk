@@ -38,6 +38,28 @@ jobs:
         # ref: master
         # Relative path from current directory, where to clone.
         path: modules/mod-ah-bot
+    - name: get mod-solo-lfg
+      uses: sudosubin/git-clone-action@v1.0.1
+      with:
+        # Repository owner and name. Ex: sudosubin/git-clone-action
+        repository: azerothcore/mod-solo-lfg.git
+        # Git host platform. Ex: github, gitlab, bitbucket, gitee, or else (git.suckless.org, ...)
+        # platform: # optional, default is github
+        # Git branch or tag to checkout.
+        # ref: master
+        # Relative path from current directory, where to clone.
+        path: modules/mod-solo-lfg
+    - name: get mod-1v1-arena
+      uses: sudosubin/git-clone-action@v1.0.1
+      with:
+        # Repository owner and name. Ex: sudosubin/git-clone-action
+        repository: azerothcore/mod-1v1-arena
+        # Git host platform. Ex: github, gitlab, bitbucket, gitee, or else (git.suckless.org, ...)
+        # platform: # optional, default is github
+        # Git branch or tag to checkout.
+        # ref: master
+        # Relative path from current directory, where to clone.
+        path: modules/mod-1v1-arena
     - name: docker build 
       run: ./acore.sh docker build
     - name: build ac-tools
@@ -69,4 +91,14 @@ jobs:
       run: docker tag acore/ac-wotlk-client-data:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-client-data:$(git log --pretty=format:"%h" -1) &&   docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-client-data:$(git log --pretty=format:"%h" -1)
     - name: docker push ac-wotlk-tools
       run: docker tag acore/ac-wotlk-tools:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-tools:$(git log --pretty=format:"%h" -1) &&   docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-tools:$(git log --pretty=format:"%h" -1)
+    - name: docker push ac-wotlk-authserver
+      run: docker tag acore/ac-wotlk-authserver:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-authserver:latest && docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-authserver:latest
+    - name: docker push ac-wotlk-worldserver
+      run: docker tag acore/ac-wotlk-worldserver:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-worldserver:latest &&  docker  push  registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-worldserver:latest
+    - name: docker push ac-wotlk-db-import
+      run: docker tag acore/ac-wotlk-db-import:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-db-import:latest &&   docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-db-import:latest
+    - name: docker push ac-wotlk-client-data
+      run: docker tag acore/ac-wotlk-client-data:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-client-data:latest &&   docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-client-data:latest
+    - name: docker push ac-wotlk-tools
+      run: docker tag acore/ac-wotlk-tools:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-tools:latest &&   docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-tools:latest
           
