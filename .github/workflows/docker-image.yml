@@ -71,3 +71,38 @@ jobs:
       run: echo IMGTAG=$GITAG-$GITAG_MOD_PLAYERBOTS-$GITAG_MOD_AH_BOT-$GITAG_MOD_SOLO_LFG-$GITAG_MOD_1V1_ARENA-$GITAG_MOD_ELUNA >> $GITHUB_ENV
     - name: show docker tag
       run: echo $IMGTAG
+    #build images
+    - name: docker build 
+      run: ./acore.sh docker build
+    - name: build ac-tools
+      run: docker compose build ac-tools
+    - name: docker images
+      run: docker images
+    #push to aliyun registry
+    - name: Docker Login
+      uses: docker/login-action@v3.2.0
+      with:
+        registry: registry.us-west-1.aliyuncs.com
+        username: ${{ secrets.DOCKER_USER }}
+        password: ${{ secrets.DOCKER_PSW  }}
+    - name: docker push ac-wotlk-authserver
+      run: docker tag acore/ac-wotlk-authserver:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-authserver:$IMGTAG && docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-authserver:$IMGTAG
+    - name: docker push ac-wotlk-worldserver
+      run: docker tag acore/ac-wotlk-worldserver:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-worldserver:$IMGTAG &&  docker  push  registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-worldserverIMGTAG
+    - name: docker push ac-wotlk-db-import
+      run: docker tag acore/ac-wotlk-db-import:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-db-import:$IMGTAG &&   docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-db-import:$IMGTAG
+    - name: docker push ac-wotlk-client-data
+      run: docker tag acore/ac-wotlk-client-data:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-client-data:$IMGTAG &&   docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-client-data:$IMGTAG
+    - name: docker push ac-wotlk-tools
+      run: docker tag acore/ac-wotlk-tools:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-tools:$IMGTAG &&   docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-tools:$IMGTAG
+    - name: docker push ac-wotlk-authserver
+      run: docker tag acore/ac-wotlk-authserver:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-authserver:latest && docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-authserver:latest
+    - name: docker push ac-wotlk-worldserver
+      run: docker tag acore/ac-wotlk-worldserver:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-worldserver:latest &&  docker  push  registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-worldserver:latest
+    - name: docker push ac-wotlk-db-import
+      run: docker tag acore/ac-wotlk-db-import:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-db-import:latest &&   docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-db-import:latest
+    - name: docker push ac-wotlk-client-data
+      run: docker tag acore/ac-wotlk-client-data:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-client-data:latest &&   docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-client-data:latest
+    - name: docker push ac-wotlk-tools
+      run: docker tag acore/ac-wotlk-tools:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-tools:latest &&   docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-tools:latest
+          
