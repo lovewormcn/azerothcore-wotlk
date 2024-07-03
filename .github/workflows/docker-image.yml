@@ -28,8 +28,7 @@ jobs:
         ref: master
         path: modules/mod-playerbots
     - name: make gitag_mod_playerbots
-      run: |
-       export GITAG_MOD_PLAYERBOTS=bot$(git log --pretty=format:"%h" -1)
+      run: echo GITAG_MOD_PLAYERBOTS=bot$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
       working-directory: modules/mod-playerbots
     #mod-ah-bot
     - name: get mod-ah-bot
@@ -38,8 +37,7 @@ jobs:
         repository: azerothcore/mod-ah-bot
         path: modules/mod-ah-bot
     - name: make gitag_mod_ah_bot
-      run: |
-       export GITAG_MOD_AH_BOT=ah$(git log --pretty=format:"%h" -1)
+      run: echo GITAG_MOD_AH_BOT=ah$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
       working-directory: modules/mod-ah-bot
     #mod-solo-lfg
     - name: get mod-solo-lfg
@@ -48,8 +46,7 @@ jobs:
         repository: azerothcore/mod-solo-lfg
         path: modules/mod-solo-lfg
     - name: make gitag_mod_solo_lfg
-      run: |
-       export GITAG_MOD_SOLO_LFG=lfg$(git log --pretty=format:"%h" -1)
+      run: echo GITAG_MOD_SOLO_LFG=lfg$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
       working-directory: modules/mod-solo-lfg
     #mod-1v1-arena
     - name: get mod-1v1-arena
@@ -58,8 +55,7 @@ jobs:
         repository: azerothcore/mod-1v1-arena
         path: modules/mod-1v1-arena
     - name: make gitag_mod_1v1_arena
-      run: |
-       export GITAG_MOD_1V1_ARENA=1v1$(git log --pretty=format:"%h" -1)
+      run: echo GITAG_MOD_1V1_ARENA=1v1$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
       working-directory: modules/mod-1v1-arena
     #mod-eluna
     - name: get mod-eluna
@@ -68,8 +64,7 @@ jobs:
         repository: azerothcore/mod-eluna
         path: modules/mod-eluna
     - name: make gitag_mod_eluna
-      run: |
-       export GITAG_MOD_ELUNA=lua$(git log --pretty=format:"%h" -1)
+      run: echo GITAG_MOD_ELUNA=lua$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
       working-directory: modules/mod-eluna
     #show tags
     - name: show tags
