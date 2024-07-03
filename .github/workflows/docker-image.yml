@@ -67,6 +67,7 @@ jobs:
       run: echo GITAG_MOD_ELUNA=lua$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
       working-directory: modules/mod-eluna
     #show tags
-    - name: show tags
-      run: |
-       echo $GITAG-$GITAG_MOD_PLAYERBOTS-$GITAG_MOD_AH_BOT-$GITAG_MOD_SOLO_LFG-$GITAG_MOD_1V1_ARENA-$GITAG_MOD_ELUNA
+    - name: make docker image tag
+      run: echo IMGTAG=$GITAG-$GITAG_MOD_PLAYERBOTS-$GITAG_MOD_AH_BOT-$GITAG_MOD_SOLO_LFG-$GITAG_MOD_1V1_ARENA-$GITAG_MOD_ELUNA >> $GITHUB_ENV
+    - name: show docker tag
+      run: echo $IMGTAG
