@@ -16,89 +16,63 @@ jobs:
     - uses: actions/checkout@v4
     - name: pwd && ls -l 
       run: pwd && ls -l 
+    #gitag
+    - name: make gitag
+      run: |
+       export GITAG=$(git log --pretty=format:"%h" -1)
+      working-directory: ./
+    #mod-playerbots
     - name: get mod-playerbots
       uses: sudosubin/git-clone-action@v1.0.1
       with:
-        # Repository owner and name. Ex: sudosubin/git-clone-action
         repository: liyunfan1223/mod-playerbots
-        # Git host platform. Ex: github, gitlab, bitbucket, gitee, or else (git.suckless.org, ...)
-        # platform: # optional, default is github
-        # Git branch or tag to checkout.
         ref: master
-        # Relative path from current directory, where to clone.
         path: modules/mod-playerbots
+    - name: make gitag_mod_playerbots
+      run: |
+       export GITAG_MOD_PLAYERBOTS=bot$(git log --pretty=format:"%h" -1)
+      working-directory: modules/mod-playerbots
+    #mod-ah-bot
     - name: get mod-ah-bot
       uses: sudosubin/git-clone-action@v1.0.1
       with:
-        # Repository owner and name. Ex: sudosubin/git-clone-action
         repository: azerothcore/mod-ah-bot
-        # Git host platform. Ex: github, gitlab, bitbucket, gitee, or else (git.suckless.org, ...)
-        # platform: # optional, default is github
-        # Git branch or tag to checkout.
-        # ref: master
-        # Relative path from current directory, where to clone.
         path: modules/mod-ah-bot
+    - name: make gitag_mod_ah_bot
+      run: |
+       export GITAG_MOD_AH_BOT=ah$(git log --pretty=format:"%h" -1)
+      working-directory: modules/mod-ah-bot
+    #mod-solo-lfg
     - name: get mod-solo-lfg
       uses: sudosubin/git-clone-action@v1.0.1
       with:
-        # Repository owner and name. Ex: sudosubin/git-clone-action
         repository: azerothcore/mod-solo-lfg
-        # Git host platform. Ex: github, gitlab, bitbucket, gitee, or else (git.suckless.org, ...)
-        # platform: # optional, default is github
-        # Git branch or tag to checkout.
-        # ref: master
-        # Relative path from current directory, where to clone.
         path: modules/mod-solo-lfg
+    - name: make gitag_mod_solo_lfg
+      run: |
+       export GITAG_MOD_SOLO_LFG=lfg$(git log --pretty=format:"%h" -1)
+      working-directory: modules/mod-solo-lfg
+    #mod-1v1-arena
     - name: get mod-1v1-arena
       uses: sudosubin/git-clone-action@v1.0.1
       with:
-        # Repository owner and name. Ex: sudosubin/git-clone-action
         repository: azerothcore/mod-1v1-arena
-        # Git host platform. Ex: github, gitlab, bitbucket, gitee, or else (git.suckless.org, ...)
-        # platform: # optional, default is github
-        # Git branch or tag to checkout.
-        # ref: master
-        # Relative path from current directory, where to clone.
         path: modules/mod-1v1-arena
-    - name: docker build 
-      run: ./acore.sh docker build
-    - name: build ac-tools
-      run: docker compose build ac-tools
-    - name: docker images
-      run: docker images
-    - name: Docker Login
-      # You may pin to the exact commit or the version.
-      # uses: docker/login-action@0d4c9c5ea7693da7b068278f7b52bda2a190a446
-      uses: docker/login-action@v3.2.0
+    - name: make gitag_mod_1v1_arena
+      run: |
+       export GITAG_MOD_1V1_ARENA=1v1$(git log --pretty=format:"%h" -1)
+      working-directory: modules/mod-1v1-arena
+    #mod-eluna
+    - name: get mod-eluna
+      uses: sudosubin/git-clone-action@v1.0.1
       with:
-        # Server address of Docker registry. If not set then will default to Docker Hub
-        registry: registry.us-west-1.aliyuncs.com
-        # Username used to log against the Docker registry
-        username: ${{ secrets.DOCKER_USER }}
-        # Password or personal access token used to log against the Docker registry
-        password: ${{ secrets.DOCKER_PSW  }}
-        # Specifies whether the given registry is ECR (auto, true or false)
-        #ecr: # optional, default is auto
-        # Log out from the Docker registry at the end of a job
-        #logout: # optional, default is true
-    - name: docker push ac-wotlk-authserver
-      run: docker tag acore/ac-wotlk-authserver:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-authserver:$(git log --pretty=format:"%h" -1) && docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-authserver:$(git log --pretty=format:"%h" -1)
-    - name: docker push ac-wotlk-worldserver
-      run: docker tag acore/ac-wotlk-worldserver:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-worldserver:$(git log --pretty=format:"%h" -1) &&  docker  push  registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-worldserver:$(git log --pretty=format:"%h" -1)
-    - name: docker push ac-wotlk-db-import
-      run: docker tag acore/ac-wotlk-db-import:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-db-import:$(git log --pretty=format:"%h" -1) &&   docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-db-import:$(git log --pretty=format:"%h" -1)
-    - name: docker push ac-wotlk-client-data
-      run: docker tag acore/ac-wotlk-client-data:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-client-data:$(git log --pretty=format:"%h" -1) &&   docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-client-data:$(git log --pretty=format:"%h" -1)
-    - name: docker push ac-wotlk-tools
-      run: docker tag acore/ac-wotlk-tools:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-tools:$(git log --pretty=format:"%h" -1) &&   docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-tools:$(git log --pretty=format:"%h" -1)
-    - name: docker push ac-wotlk-authserver
-      run: docker tag acore/ac-wotlk-authserver:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-authserver:latest && docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-authserver:latest
-    - name: docker push ac-wotlk-worldserver
-      run: docker tag acore/ac-wotlk-worldserver:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-worldserver:latest &&  docker  push  registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-worldserver:latest
-    - name: docker push ac-wotlk-db-import
-      run: docker tag acore/ac-wotlk-db-import:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-db-import:latest &&   docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-db-import:latest
-    - name: docker push ac-wotlk-client-data
-      run: docker tag acore/ac-wotlk-client-data:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-client-data:latest &&   docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-wotlk-client-data:latest
-    - name: docker push ac-wotlk-tools
-      run: docker tag acore/ac-wotlk-tools:master registry.us-west-1.aliyuncs.com/out-of-wall/ac-tools:latest &&   docker  push registry.us-west-1.aliyuncs.com/out-of-wall/ac-tools:latest
-          
+        repository: azerothcore/mod-eluna
+        path: modules/mod-eluna
+    - name: make gitag_mod_eluna
+      run: |
+       export GITAG_MOD_ELUNA=lua$(git log --pretty=format:"%h" -1)
+      working-directory: modules/mod-eluna
+    #show tags
+    - name: show tags
+      run: |
+       echo $GITAG-$GITAG_MOD_PLAYERBOTS-$GITAG_MOD_AH_BOT-$GITAG_MOD_SOLO_LFG-$GITAG_MOD_1V1_ARENA-$GITAG_MOD_ELUNA
