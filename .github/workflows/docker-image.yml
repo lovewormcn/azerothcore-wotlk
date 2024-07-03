@@ -19,7 +19,7 @@ jobs:
     #gitag
     - name: make gitag
       run: |
-       echo '##[set-env name=GITAG;]$(git log --pretty=format:"%h" -1)' >> $GITHUB_ENV
+       echo 'GITAG=$(git log --pretty=format:"%h" -1)' >> $GITHUB_ENV
       working-directory: ./
     #mod-playerbots
     - name: get mod-playerbots
