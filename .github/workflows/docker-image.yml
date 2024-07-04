@@ -68,6 +68,18 @@ jobs:
     - name: make gitag_mod_solo_lfg
       run: echo GITAG_MOD_SOLO_LFG=lfg$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
       working-directory: modules/mod-solo-lfg
+    #mod-eluna
+    - name: get mod-eluna
+      uses: sudosubin/git-clone-action@v1.0.1
+      with:
+        repository: azerothcore/mod-eluna
+        path: modules/mod-eluna
+    - run: git checkout $eluna_sha
+      if: ${{ env.eluna_sha != '' }}
+      working-directory: modules/mod-eluna
+    - name: make gitag_mod_eluna
+      run: echo GITAG_MOD_ELUNA=lua$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
+      working-directory: modules/mod-eluna
     #mod-1v1-arena
     - name: get mod-1v1-arena
       uses: sudosubin/git-clone-action@v1.0.1
@@ -80,18 +92,6 @@ jobs:
     - name: make gitag_mod_1v1_arena
       run: echo GITAG_MOD_1V1_ARENA=1v1$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
       working-directory: modules/mod-1v1-arena
-    #mod-eluna
-    - name: get mod-eluna
-      uses: sudosubin/git-clone-action@v1.0.1
-      with:
-        repository: azerothcore/mod-eluna
-        path: modules/mod-eluna
-    - run: sleep 1s && git checkout $eluna_sha
-      if: ${{ env.eluna_sha != '' }}
-      working-directory: modules/mod-eluna
-    - name: make gitag_mod_eluna
-      run: echo GITAG_MOD_ELUNA=lua$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
-      working-directory: modules/mod-eluna
     #show tags
     - name: make docker image tag
       run: echo IMGTAG=$GITAG-$GITAG_MOD_PLAYERBOTS-$GITAG_MOD_AH_BOT-$GITAG_MOD_SOLO_LFG-$GITAG_MOD_1V1_ARENA-$GITAG_MOD_ELUNA >> $GITHUB_ENV
