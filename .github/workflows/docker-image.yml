@@ -75,7 +75,7 @@ jobs:
     - name: get mod-eluna
       uses: actions/checkout@v4
       with:
-        repository: lovewormcn/mod-eluna
+        repository: azerothcore/mod-eluna
         fetch-depth: 0
         path: modules/mod-eluna
     - run: git checkout $eluna_sha
