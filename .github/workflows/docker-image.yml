@@ -14,8 +14,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-      with:
-        ref: +dc35a7db0cf817efc0f540460d328ce515e29659
+    - run: |
+        git checkout 7a47b27
     - name: pwd && ls -l 
       run: pwd && ls -l 
     #gitag
