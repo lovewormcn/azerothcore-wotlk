@@ -18,7 +18,7 @@ jobs:
       run: pwd && ls -l 
     #checkout at commit
     - name: checkout commit
-      run: git checkout 7a47b27
+      run: git reset --hard 7a47b27
       working-directory: ./ 
     #gitag
     - name: make gitag
