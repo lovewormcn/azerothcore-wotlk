@@ -49,7 +49,6 @@ jobs:
       uses: sudosubin/git-clone-action@v1.0.1
       with:
         repository: azerothcore/mod-ah-bot
-        ref: f3d285e
         path: modules/mod-ah-bot
     - run: git checkout $ah_bot_sha
       if: ${{ env.ah_bot_sha != '' }}
@@ -62,7 +61,6 @@ jobs:
       uses: sudosubin/git-clone-action@v1.0.1
       with:
         repository: azerothcore/mod-solo-lfg
-        ref: 97bf902
         path: modules/mod-solo-lfg
     - run: git checkout $solo_lfg_sha
       if: ${{ env.solo_lfg_sha != '' }}
@@ -75,7 +73,6 @@ jobs:
       uses: sudosubin/git-clone-action@v1.0.1
       with:
         repository: azerothcore/mod-1v1-arena
-        ref: d8fc2b6
         path: modules/mod-1v1-arena
     - run: git checkout $arena_sha
       if: ${{ env.arena_sha != '' }}
@@ -88,7 +85,6 @@ jobs:
       uses: sudosubin/git-clone-action@v1.0.1
       with:
         repository: azerothcore/mod-eluna
-        ref: c652ee8
         path: modules/mod-eluna
     - run: git checkout $eluna_sha
       if: ${{ env.eluna_sha != '' }}
