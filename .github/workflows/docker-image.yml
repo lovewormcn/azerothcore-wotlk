@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ "Playerbot" ]
 
+env:
+  master_sha: 7a47b27
+
 jobs:
 
   build:
@@ -17,6 +20,7 @@ jobs:
       with:
         fetch-depth: 0
     - run: git checkout 7a47b27
+      if: ${{ env.master_sha != '' }}
     - name: pwd && ls -l 
       run: pwd && ls -l 
     #gitag
