@@ -12,7 +12,7 @@ env:
   ah_bot_sha: 'f3d285e'
   solo_lfg_sha: '97bf902'
   arena_sha: 'd8fc2b6'
-  eluna_sha: '36e1c71'
+  eluna_sha: '2f6b6c5'
 
 jobs:
 
@@ -72,7 +72,7 @@ jobs:
     - name: get mod-eluna
       uses: sudosubin/git-clone-action@v1.0.1
       with:
-        repository: azerothcore/mod-eluna
+        repository: lovewormcn/mod-eluna
         path: modules/mod-eluna
     - run: git checkout $eluna_sha
       if: ${{ env.eluna_sha != '' }}
