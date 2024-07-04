@@ -9,6 +9,10 @@ on:
 env:
   master_sha: 7a47b27
   playerbots_sha: ''
+  ah_bot_sha: ''
+  solo_lfg_sha: ''
+  arena_sha: ''
+  eluna_sha: ''
 
 jobs:
 
