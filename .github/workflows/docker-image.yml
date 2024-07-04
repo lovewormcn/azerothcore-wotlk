@@ -12,7 +12,7 @@ env:
   ah_bot_sha: 'f3d285e'
   solo_lfg_sha: '97bf902'
   arena_sha: 'd8fc2b6'
-  eluna_sha: 'c652ee8'
+  eluna_sha: 'c652ee8e1a'
 
 jobs:
 
