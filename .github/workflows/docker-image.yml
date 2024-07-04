@@ -15,7 +15,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
       with:
-        fetch-depth: 1
+        fetch-depth: 0
     - run: |
         git checkout 7a47b27
     - name: pwd && ls -l 
