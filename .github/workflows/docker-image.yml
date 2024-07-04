@@ -14,12 +14,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+      with:
+        ref: 7a47b27
     - name: pwd && ls -l 
       run: pwd && ls -l 
-    #checkout at commit
-    - name: checkout commit
-      run: git reset --hard 7a47b27
-      working-directory: ./ 
     #gitag
     - name: make gitag
       run: echo GITAG=$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
@@ -79,3 +77,5 @@ jobs:
       run: echo IMGTAG=$GITAG-$GITAG_MOD_PLAYERBOTS-$GITAG_MOD_AH_BOT-$GITAG_MOD_SOLO_LFG-$GITAG_MOD_1V1_ARENA-$GITAG_MOD_ELUNA >> $GITHUB_ENV
     - name: show docker tag
       run: echo $IMGTAG
+    
+          
