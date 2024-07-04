@@ -34,9 +34,10 @@ jobs:
       working-directory: ./
     #mod-playerbots
     - name: get mod-playerbots
-      uses: sudosubin/git-clone-action@v1.0.1
+      uses: actions/checkout@v4
       with:
         repository: liyunfan1223/mod-playerbots
+        fetch-depth: 0
         path: modules/mod-playerbots
     - run: git checkout $playerbots_sha
       if: ${{ env.playerbots_sha != '' }}
@@ -46,9 +47,10 @@ jobs:
       working-directory: modules/mod-playerbots
     #mod-ah-bot
     - name: get mod-ah-bot
-      uses: sudosubin/git-clone-action@v1.0.1
+      uses: actions/checkout@v4
       with:
         repository: azerothcore/mod-ah-bot
+        fetch-depth: 0
         path: modules/mod-ah-bot
     - run: git checkout $ah_bot_sha
       if: ${{ env.ah_bot_sha != '' }}
@@ -58,9 +60,10 @@ jobs:
       working-directory: modules/mod-ah-bot
     #mod-solo-lfg
     - name: get mod-solo-lfg
-      uses: sudosubin/git-clone-action@v1.0.1
+      uses: actions/checkout@v4
       with:
         repository: azerothcore/mod-solo-lfg
+        fetch-depth: 0
         path: modules/mod-solo-lfg
     - run: git checkout $solo_lfg_sha
       if: ${{ env.solo_lfg_sha != '' }}
@@ -70,9 +73,10 @@ jobs:
       working-directory: modules/mod-solo-lfg
     #mod-eluna
     - name: get mod-eluna
-      uses: sudosubin/git-clone-action@v1.0.1
+      uses: actions/checkout@v4
       with:
-        repository: azerothcore/mod-eluna
+        repository: lovewormcn/mod-eluna
+        fetch-depth: 0
         path: modules/mod-eluna
     - run: git checkout $eluna_sha
       if: ${{ env.eluna_sha != '' }}
@@ -82,9 +86,10 @@ jobs:
       working-directory: modules/mod-eluna
     #mod-1v1-arena
     - name: get mod-1v1-arena
-      uses: sudosubin/git-clone-action@v1.0.1
+      uses: actions/checkout@v4
       with:
         repository: azerothcore/mod-1v1-arena
+        fetch-depth: 0
         path: modules/mod-1v1-arena
     - run: git checkout $arena_sha
       if: ${{ env.arena_sha != '' }}
