@@ -16,8 +16,7 @@ jobs:
     - uses: actions/checkout@v4
       with:
         fetch-depth: 0
-    - run: |
-        git checkout 7a47b27
+    - run: git checkout 7a47b27
     - name: pwd && ls -l 
       run: pwd && ls -l 
     #gitag
@@ -29,8 +28,9 @@ jobs:
       uses: sudosubin/git-clone-action@v1.0.1
       with:
         repository: liyunfan1223/mod-playerbots
-        ref: 02786e6
         path: modules/mod-playerbots
+    - run: |
+        git checkout 02786e6
     - name: make gitag_mod_playerbots
       run: echo GITAG_MOD_PLAYERBOTS=bot$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
       working-directory: modules/mod-playerbots
