@@ -29,8 +29,8 @@ jobs:
       with:
         repository: liyunfan1223/mod-playerbots
         path: modules/mod-playerbots
-    - run: |
-        git checkout 02786e6
+    - run: git checkout 02786e6
+      working-directory: modules/mod-playerbots
     - name: make gitag_mod_playerbots
       run: echo GITAG_MOD_PLAYERBOTS=bot$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
       working-directory: modules/mod-playerbots
