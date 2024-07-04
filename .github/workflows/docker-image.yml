@@ -8,11 +8,11 @@ on:
 
 env:
   master_sha: 7a47b27
-  playerbots_sha: ''
-  ah_bot_sha: ''
-  solo_lfg_sha: ''
-  arena_sha: ''
-  eluna_sha: ''
+  playerbots_sha: 02786e6
+  ah_bot_sha: f3d285e
+  solo_lfg_sha: 97bf902
+  arena_sha: d8fc2b6
+  eluna_sha: c652ee8
 
 jobs:
 
@@ -51,6 +51,9 @@ jobs:
         repository: azerothcore/mod-ah-bot
         ref: f3d285e
         path: modules/mod-ah-bot
+    - run: git checkout $ah_bot_sha
+      if: ${{ env.ah_bot_sha != '' }}
+      working-directory: modules/mod-ah-bot
     - name: make gitag_mod_ah_bot
       run: echo GITAG_MOD_AH_BOT=ah$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
       working-directory: modules/mod-ah-bot
@@ -61,6 +64,9 @@ jobs:
         repository: azerothcore/mod-solo-lfg
         ref: 97bf902
         path: modules/mod-solo-lfg
+    - run: git checkout $solo_lfg_sha
+      if: ${{ env.solo_lfg_sha != '' }}
+      working-directory: modules/mod-solo-lfg
     - name: make gitag_mod_solo_lfg
       run: echo GITAG_MOD_SOLO_LFG=lfg$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
       working-directory: modules/mod-solo-lfg
@@ -71,6 +77,9 @@ jobs:
         repository: azerothcore/mod-1v1-arena
         ref: d8fc2b6
         path: modules/mod-1v1-arena
+    - run: git checkout $arena_sha
+      if: ${{ env.arena_sha != '' }}
+      working-directory: modules/mod-1v1-arena
     - name: make gitag_mod_1v1_arena
       run: echo GITAG_MOD_1V1_ARENA=1v1$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
       working-directory: modules/mod-1v1-arena
@@ -81,6 +90,9 @@ jobs:
         repository: azerothcore/mod-eluna
         ref: c652ee8
         path: modules/mod-eluna
+    - run: git checkout $eluna_sha
+      if: ${{ env.eluna_sha != '' }}
+      working-directory: modules/mod-eluna
     - name: make gitag_mod_eluna
       run: echo GITAG_MOD_ELUNA=lua$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
       working-directory: modules/mod-eluna
