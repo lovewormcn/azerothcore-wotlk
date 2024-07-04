@@ -86,7 +86,7 @@ jobs:
       with:
         repository: azerothcore/mod-eluna
         path: modules/mod-eluna
-    - run: git checkout $eluna_sha
+    - run: sleep 1s && git checkout $eluna_sha
       if: ${{ env.eluna_sha != '' }}
       working-directory: modules/mod-eluna
     - name: make gitag_mod_eluna
