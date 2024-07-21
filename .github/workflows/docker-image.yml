@@ -7,9 +7,9 @@ on:
     branches: [ "Playerbot" ]
 
 env:
-  master_sha: '05c9a96'
-  playerbots_sha: 'cabc09f'
-  ah_bot_sha: 'f3d285e'
+  master_sha: 'ea02e90'
+  playerbots_sha: '4cc4695'
+  ah_bot_sha: '8b06eb4'
   solo_lfg_sha: '97bf902'
   arena_sha: 'd8fc2b6'
   eluna_sha: 'e00386f'
