@@ -66,6 +66,7 @@ RUN apt-get update                                                     \
         git lsb-base curl unzip default-mysql-client openssl                  \
         default-libmysqlclient-dev libboost-all-dev libssl-dev libmysql++-dev \
         libreadline-dev zlib1g-dev libbz2-dev libncurses5-dev         \
+         gcc g++ clang  libncurses-dev                                \
     && rm -rf /var/lib/apt/lists/*
 
 COPY CMakeLists.txt /azerothcore/CMakeLists.txt
@@ -94,8 +95,8 @@ RUN --mount=type=cache,target=/ccache,sharing=locked \
        -DMODULES="$CMODULES"                           \
        -DWITH_WARNINGS="$CWITH_WARNINGS"               \
        -DCMAKE_BUILD_TYPE="$CTYPE"                     \
-       -DCMAKE_CXX_COMPILER="clang++"                  \
-       -DCMAKE_C_COMPILER="clang"                      \
+       -DCMAKE_CXX_COMPILER="g++"                  \
+       -DCMAKE_C_COMPILER="gcc"                      \
        -DCMAKE_CXX_COMPILER_LAUNCHER="ccache"          \
        -DCMAKE_C_COMPILER_LAUNCHER="ccache"            \
        -DBoost_USE_STATIC_LIBS="ON"                    \
