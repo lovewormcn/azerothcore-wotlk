@@ -87,7 +87,7 @@ RUN --mount=type=cache,target=/ccache,sharing=locked \
     # of git repo into the container.
     --mount=type=bind,target=/azerothcore/.git,source=.git \
     git config --global --add safe.directory /azerothcore \
-    && cmake /azerothcore \
+    && cmake --trace-expand /azerothcore \
        -DCMAKE_INSTALL_PREFIX="/azerothcore/env/dist"  \
        -DAPPS_BUILD="all"                              \
        -DTOOLS_BUILD="$CTOOLS_BUILD"                   \
