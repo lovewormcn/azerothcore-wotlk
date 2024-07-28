@@ -7,7 +7,7 @@ on:
     branches: [ "Playerbot" ]
 
 env:
-  master_sha: '69ad19d'
+  master_sha: '664d8a9'
   playerbots_sha: 'd07d256'
   ah_bot_sha: '8b06eb4'
   solo_lfg_sha: '97bf902'
