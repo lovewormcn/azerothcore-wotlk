@@ -72,18 +72,18 @@ jobs:
       run: echo GITAG_MOD_SOLO_LFG=lfg$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
       working-directory: modules/mod-solo-lfg
     #mod-eluna
-    #- name: get mod-eluna
-    #  uses: actions/checkout@v4
-    #  with:
-    #    repository: azerothcore/mod-eluna
-    #    fetch-depth: 0
-    #    path: modules/mod-eluna
-    #- run: git checkout $eluna_sha
-    #  if: ${{ env.eluna_sha != '' }}
-    #  working-directory: modules/mod-eluna
-    #- name: make gitag_mod_eluna
-    #  run: echo GITAG_MOD_ELUNA=lua$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
-    #  working-directory: modules/mod-eluna
+    - name: get mod-eluna
+      uses: actions/checkout@v4
+      with:
+        repository: azerothcore/mod-eluna
+        fetch-depth: 0
+        path: modules/mod-eluna
+    - run: git checkout $eluna_sha
+      if: ${{ env.eluna_sha != '' }}
+      working-directory: modules/mod-eluna
+    - name: make gitag_mod_eluna
+      run: echo GITAG_MOD_ELUNA=lua$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
+      working-directory: modules/mod-eluna
     #mod-1v1-arena
     - name: get mod-1v1-arena
       uses: actions/checkout@v4
