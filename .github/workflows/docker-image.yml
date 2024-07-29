@@ -17,7 +17,7 @@ env:
   eluna_sha: 'e00386f'
 
 jobs:
-  build-containers::
+  build-containers:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
@@ -115,8 +115,8 @@ jobs:
       uses: ./.github/actions/docker-tag-and-build
       with:
         component-name: worldserver
-          version: ${{ steps.version.outputs.version }}
-          push: false
+        version: ${{ steps.version.outputs.version }}
+        push: false
 
     - name: build authserver
       uses: ./.github/actions/docker-tag-and-build
