@@ -30,6 +30,7 @@ jobs:
       run: pwd && ls -l 
     #gitag
     - name: make gitag
+      if: ${{ env.master_sha != '' }}
       run: echo GITAG=$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
       working-directory: ./
     #mod-playerbots
@@ -44,6 +45,7 @@ jobs:
       if: ${{ env.playerbots_sha != '' }}
       working-directory: modules/mod-playerbots
     - name: make gitag_mod_playerbots
+      if: ${{ env.playerbots_sha != '' }}
       run: echo GITAG_MOD_PLAYERBOTS=bot$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
       working-directory: modules/mod-playerbots
     #mod-ah-bot
@@ -58,6 +60,7 @@ jobs:
       if: ${{ env.ah_bot_sha != '' }}
       working-directory: modules/mod-ah-bot
     - name: make gitag_mod_ah_bot
+      if: ${{ env.ah_bot_sha != '' }}
       run: echo GITAG_MOD_AH_BOT=ah$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
       working-directory: modules/mod-ah-bot
     #mod-solo-lfg
@@ -72,6 +75,7 @@ jobs:
       if: ${{ env.solo_lfg_sha != '' }}
       working-directory: modules/mod-solo-lfg
     - name: make gitag_mod_solo_lfg
+      if: ${{ env.solo_lfg_sha != '' }}
       run: echo GITAG_MOD_SOLO_LFG=lfg$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
       working-directory: modules/mod-solo-lfg
     #mod-eluna
@@ -86,6 +90,7 @@ jobs:
       if: ${{ env.eluna_sha != '' }}
       working-directory: modules/mod-eluna
     - name: make gitag_mod_eluna
+      if: ${{ env.eluna_sha != '' }}
       run: echo GITAG_MOD_ELUNA=lua$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
       working-directory: modules/mod-eluna
     #mod-1v1-arena
@@ -100,6 +105,7 @@ jobs:
       if: ${{ env.arena_sha != '' }}
       working-directory: modules/mod-1v1-arena
     - name: make gitag_mod_1v1_arena
+      if: ${{ env.arena_sha != '' }}
       run: echo GITAG_MOD_1V1_ARENA=1v1$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
       working-directory: modules/mod-1v1-arena
     #show tags
