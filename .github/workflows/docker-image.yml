@@ -17,10 +17,8 @@ env:
   eluna_sha: 'e00386f'
 
 jobs:
-
   build-containers::
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v4
       with:
