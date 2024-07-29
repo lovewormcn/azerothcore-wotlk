@@ -66,7 +66,6 @@ RUN apt-get update                                                     \
         git lsb-base curl unzip default-mysql-client openssl                  \
         default-libmysqlclient-dev libboost-all-dev libssl-dev libmysql++-dev \
         libreadline-dev zlib1g-dev libbz2-dev libncurses5-dev         \
-         gcc g++ clang  libncurses-dev                                \
     && rm -rf /var/lib/apt/lists/*
 
 COPY CMakeLists.txt /azerothcore/CMakeLists.txt
@@ -87,7 +86,7 @@ RUN --mount=type=cache,target=/ccache,sharing=locked \
     # of git repo into the container.
     --mount=type=bind,target=/azerothcore/.git,source=.git \
     git config --global --add safe.directory /azerothcore \
-    && cmake --trace-expand /azerothcore \
+    && cmake /azerothcore \
        -DCMAKE_INSTALL_PREFIX="/azerothcore/env/dist"  \
        -DAPPS_BUILD="all"                              \
        -DTOOLS_BUILD="$CTOOLS_BUILD"                   \
@@ -95,8 +94,8 @@ RUN --mount=type=cache,target=/ccache,sharing=locked \
        -DMODULES="$CMODULES"                           \
        -DWITH_WARNINGS="$CWITH_WARNINGS"               \
        -DCMAKE_BUILD_TYPE="$CTYPE"                     \
-       -DCMAKE_CXX_COMPILER="g++"                  \
-       -DCMAKE_C_COMPILER="gcc"                      \
+       -DCMAKE_CXX_COMPILER="clang++"                  \
+       -DCMAKE_C_COMPILER="clang"                      \
        -DCMAKE_CXX_COMPILER_LAUNCHER="ccache"          \
        -DCMAKE_C_COMPILER_LAUNCHER="ccache"            \
        -DBoost_USE_STATIC_LIBS="ON"                    \
@@ -119,7 +118,6 @@ ENV ACORE_COMPONENT=undefined
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
       libmysqlclient21 libreadline8 \
-      libstdc++6 libc6 \
       gettext-base default-mysql-client && \
     rm -rf /var/lib/apt/lists/*
 
