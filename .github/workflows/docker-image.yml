@@ -9,12 +9,12 @@ on:
 env:
   COMPOSE_DOCKER_CLI_BUILD: 1
   DOCKER_BUILDKIT: 1
-  master_sha: '16ddc80'
-  playerbots_sha: 'd07d256'
-  ah_bot_sha: '8b06eb4'
-  solo_lfg_sha: '97bf902'
-  arena_sha: 'd8fc2b6'
-  eluna_sha: 'e00386f'
+  master_sha: 'ec7db10'
+  playerbots_sha: 'fa5b66b'
+  #ah_bot_sha: '8b06eb4'
+  #solo_lfg_sha: '97bf902'
+  #arena_sha: 'd8fc2b6'
+  #eluna_sha: 'e00386f'
 
 jobs:
   build-containers:
