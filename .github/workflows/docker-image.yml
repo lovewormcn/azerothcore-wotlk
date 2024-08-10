@@ -10,11 +10,12 @@ env:
   COMPOSE_DOCKER_CLI_BUILD: 1
   DOCKER_BUILDKIT: 1
   master_sha: '708ff3a'
-  playerbots_sha: 'c0836c2'
+  playerbots_sha: 'c20124f'
   ah_bot_sha: '8b06eb4'
   solo_lfg_sha: '97bf902'
   #arena_sha: 'd8fc2b6'
   eluna_sha: 'e00386f'
+  autobalance_sha: '94b4b4b'
 
 jobs:
   build-containers:
@@ -108,9 +109,24 @@ jobs:
       if: ${{ env.arena_sha != '' }}
       run: echo GITAG_MOD_1V1_ARENA=1v1$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
       working-directory: modules/mod-1v1-arena
+    #mod-autobalance
+    - name: get mod-autobalance
+      uses: actions/checkout@v4
+      if: ${{ env.autobalance_sha != '' }}
+      with:
+        repository: azerothcore/mod-autobalance
+        fetch-depth: 0
+        path: modules/mod-autobalance
+    - run: git checkout $autobalance_sha
+      if: ${{ env.autobalance_sha != '' }}
+      working-directory: modules/mod-autobalance
+    - name: make gitag_mod_autobalance
+      if: ${{ env.autobalance_sha != '' }}
+      run: echo GITAG_MOD_AUTOBALANCE=abl$(git log --pretty=format:"%h" -1) >> $GITHUB_ENV
+      working-directory: modules/mod-autobalance
     #show tags
     - name: make docker image tag
-      run: echo IMGTAG=$GITAG-$GITAG_MOD_PLAYERBOTS-$GITAG_MOD_AH_BOT-$GITAG_MOD_SOLO_LFG-$GITAG_MOD_1V1_ARENA-$GITAG_MOD_ELUNA >> $GITHUB_ENV
+      run: echo IMGTAG=$GITAG-$GITAG_MOD_PLAYERBOTS-$GITAG_MOD_AH_BOT-$GITAG_MOD_SOLO_LFG-$GITAG_MOD_1V1_ARENA-$GITAG_MOD_ELUNA-$GITAG_MOD_AUTOBALANCE >> $GITHUB_ENV
     - name: show docker tag
       run: echo $IMGTAG
 
