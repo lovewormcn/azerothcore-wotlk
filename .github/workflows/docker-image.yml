@@ -14,7 +14,7 @@ env:
   ah_bot_sha: '8b06eb4'
   solo_lfg_sha: '97bf902'
   #arena_sha: 'd8fc2b6'
-  eluna_sha: 'e00386f'
+  eluna_sha: 'ec0dbf7'
   autobalance_sha: '94b4b4b'
 
 jobs:
