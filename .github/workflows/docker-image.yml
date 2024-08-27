@@ -9,13 +9,13 @@ on:
 env:
   COMPOSE_DOCKER_CLI_BUILD: 1
   DOCKER_BUILDKIT: 1
-  master_sha: '1bf88ad3a341ca1f232413515c487017e706035e'
-  playerbots_sha: '5f298b846e47be0f1f7a6066388bc6076a2349f0'
-  ah_bot_sha: '8b06eb4'
+  master_sha: 'fdb6fedc0050d8d7c604e9500dde8cd567570863'
+  playerbots_sha: '4b948520d7ca2b90106a056cba4b4340e0540f46'
+  ah_bot_sha: '450239ca6bc4d208881c053b1189fd74534e35a4'
   solo_lfg_sha: '97bf902'
   #arena_sha: 'd8fc2b6'
   eluna_sha: 'ec0dbf7'
-  autobalance_sha: '94b4b4b'
+  autobalance_sha: 'f1b10a72eaa16d51ef917985dd57484fa9766bb4'
 
 jobs:
   build-containers:
