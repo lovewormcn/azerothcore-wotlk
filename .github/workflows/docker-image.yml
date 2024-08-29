@@ -10,7 +10,7 @@ env:
   COMPOSE_DOCKER_CLI_BUILD: 1
   DOCKER_BUILDKIT: 1
   master_sha: 'fdb6fedc0050d8d7c604e9500dde8cd567570863'
-  playerbots_sha: '4b948520d7ca2b90106a056cba4b4340e0540f46'
+  playerbots_sha: '7f961835010700e989f53a55895298ab714ee08d'
   ah_bot_sha: '450239ca6bc4d208881c053b1189fd74534e35a4'
   solo_lfg_sha: '97bf902'
   #arena_sha: 'd8fc2b6'
