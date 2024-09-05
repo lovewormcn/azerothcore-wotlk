@@ -9,9 +9,9 @@ on:
 env:
   COMPOSE_DOCKER_CLI_BUILD: 1
   DOCKER_BUILDKIT: 1
-  master_sha: 'f8a28b6883f78a9cca57417ef0c370b3e0077994'
-  playerbots_sha: '7c2c6b14f6a34a8a12b4b3660a5cb3ea50788001'
-  ah_bot_sha: '450239ca6bc4d208881c053b1189fd74534e35a4'
+  master_sha: '414805e'
+  playerbots_sha: 'ef2c0cd26f1610d2fcb4fb21ff8d768b8606f7da'
+  ah_bot_sha: 'cb89a9d'
   solo_lfg_sha: '97bf902'
   #arena_sha: 'd8fc2b6'
   eluna_sha: 'ec0dbf7'
